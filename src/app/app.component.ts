@@ -160,6 +160,7 @@ export class AppComponent {
             return e;
           })
         }
+        
         this.setTags();
         this.findNotes();
       }
