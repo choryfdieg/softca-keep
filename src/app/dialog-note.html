@@ -1,0 +1,33 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{title}}</mat-card-title>
+            <mat-card-subtitle>keep your taks in mind</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="noteForm">
+
+                <div fxLayout="row">
+                    <mat-form-field>
+                        <mat-label>Task name</mat-label>
+                        <input matInput type="text" placeholder="The name of your task" formControlName="title">
+                    </mat-form-field>
+
+                </div>
+                <div fxLayout="row">
+
+                    <mat-form-field>
+                        <mat-label>Task description</mat-label>
+                        <textarea matInput type="text" placeholder="The description of your task"
+                            formControlName="description"></textarea>
+                    </mat-form-field>
+                </div>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="saveNote()">Save note</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
