@@ -1,0 +1,82 @@
+<div class="container">
+
+  <mat-toolbar class="example-header">
+
+    <form class="example-form header-element">
+      <mat-form-field class="example-full-width">
+        <mat-label>Filter by task descriptcion</mat-label>
+        <input type="text" matInput [formControl]="filterFormControl" placeholder="I need to go to...">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" class="m5" (click)="findNotes()">Find</button>
+    <button mat-raised-button color="default" class="m5" (click)="newNote()">Add note</button>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="true" [fixedTopGap]="60"
+      [fixedBottomGap]="60">
+      <mat-selection-list #tagList (click)="onSelection(tagList.selectedOptions.selected)" [multiple]="false">
+        <div mat-subheader>Notes tag list</div>
+        <mat-list-option>
+          <mat-icon mat-list-icon>task</mat-icon>
+          <div mat-line>All notes</div>
+        </mat-list-option>
+        <mat-list-option *ngFor="let tag of tags; let i = index" [value]="tag">
+          <mat-icon mat-list-icon>task</mat-icon>
+          <div mat-line>{{tag}}</div>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+
+      <div>
+
+
+        <div fxLayout="row" fxLayoutWrap>
+          <div *ngFor="let note of filterNotes; let i = index">
+            <mat-card class="example-card" [ngClass]="note.color">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{note.title}}</mat-card-title>
+                <mat-card-subtitle>{{note.date | date:'medium'}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let tag of note.tags">{{tag}}</mat-list-item>
+                </mat-list>
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-mini-fab color="primary" class="m5"
+                  aria-label="Example icon button with a vertical three dot icon">
+                  <mat-icon (click)="editNote(note)">edit</mat-icon>
+                </button>
+
+                <button mat-mini-fab color="default" class="m5"
+                  aria-label="Example icon button with a vertical three dot icon">
+                  <mat-icon (click)="removeNote(note)">delete</mat-icon>
+                </button>
+
+                <button mat-mini-fab [ngClass]="note.color" class="color-button m5" (click)="changeColor(note)"
+                  aria-label="card color">
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+
+    </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">First softca exercise</mat-toolbar>
+
+</div>

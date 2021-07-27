@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent, DialogNoteDialog } from './app.component';
+import { AppComponent } from './app.component';
+import { NoteComponent } from './components/note/note.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,11 +16,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { DialogNoteDialog } from './components/dialog-note/dialog-note.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NoteComponent,
     DialogNoteDialog
   ],
   imports: [
